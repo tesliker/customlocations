@@ -1,0 +1,15 @@
+<?php
+
+function custom_locations_field_display_node_alter(&$display, $context) {
+  // Leave field labels out of the search index.
+  // Note: The check against $context['entity_type'] == 'node' could be avoided
+  // by using hook_field_display_node_alter() instead of
+  // hook_field_display_alter(), resulting in less function calls when
+  // rendering non-node entities.
+  $node = menu_get_object();
+  if ($node->field_map_or_address[LANGUAGE_NONE][0]['value'] == 1) {
+    if ($display['module'] == 'location_cck') {
+      $display['type'] = 'location_default';
+    }
+  }
+}

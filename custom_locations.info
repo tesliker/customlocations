@@ -1,0 +1,6 @@
+name = Custom Locations
+description = This will give admins an options to render node locations using gmap or just address.
+package = custom
+version = 1.0
+core = 7.x
+dependencies[] = field
